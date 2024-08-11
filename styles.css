@@ -78,3 +78,24 @@ body {
 .slideshow {
     backdrop-filter: blur(5px); /* Arka planı bulanıklaştırır */
 }
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Yatayda ortalar */
+    justify-content: center; /* Dikeyde ortalar */
+    height: 100vh; /* Ekranın tamamını kaplar */
+    background-color: #f0f0f0; /* Arka plan rengi */
+    font-family: 'Poppins', sans-serif; /* Font ayarı */
+}
+
+audio {
+    margin-bottom: 20px; /* Slideshow ile ses kontrolü arasına boşluk bırakır */
+    border: 2px solid #333; /* Ses kontrolü etrafında siyah çizgi */
+    border-radius: 5px; /* Köşeleri yuvarlatma */
+    padding: 10px; /* Ses kontrolü etrafında boşluk */
+}
+
+/* Slideshow ve diğer stiller için CSS kodlarınız buraya eklenecek */
