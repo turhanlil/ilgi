@@ -1,0 +1,80 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Yatay kaydırmayı engelle */
+    background: #f0f0f0; /* Arka plan rengini ayarlayabilirsiniz */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ekranın tamamını kaplar */
+}
+
+.slideshow {
+    display: flex;
+    flex-direction: column; /* Fotoğrafları dikey olarak yerleştirir */
+    align-items: center; /* Yatayda ortalar */
+    justify-content: center; /* Dikeyde ortalar */
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1; /* Arka planın üstte görünmesini engelle */
+}
+
+.slide-container {
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+    position: absolute; /* Slaytların üst üste gelmesi için */
+    top: 0;
+    left: 0;
+    z-index: 2; /* Slaytların diğer içeriklerden üstte görünmesini sağlar */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Fotoğrafları ve yazıları yatayda ortalar */
+    justify-content: center; /* Fotoğrafları ve yazıları dikeyde ortalar */
+    height: 100%;
+}
+
+.slide {
+    width: 80%; /* Fotoğrafın genişliğini ayarlayın */
+    height: auto; /* Fotoğrafın oranını korur */
+    max-height: 60vh; /* Fotoğrafın yüksekliği ekranın %60'ını geçmez */
+}
+
+p {
+    font-size: 1.2rem;
+    color: #333;
+    text-shadow: 1px 1px 2px #000, 0 0 1em #000, 0 0 0.2em #000; /* Snapchat tarzı dış çizgi */
+    margin: 10px 0; /* Yazının etrafında biraz boşluk */
+    z-index: 3; /* Yazıların diğer içeriklerden üstte görünmesini sağlar */
+}
+
+section {
+    padding: 20px;
+    text-align: center; /* Başlıklar ve yazılar ortalanır */
+}
+
+.section-photo {
+    width: 80%; /* Fotoğrafın genişliğini ayarlayın */
+    height: auto; /* Fotoğrafın oranını korur */
+    max-height: 50vh; /* Fotoğrafın yüksekliği ekranın %50'sini geçmez */
+    display: block;
+    margin: 0 auto; /* Fotoğrafı ortalar */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Yatay kaydırmayı engelle */
+    background: url('177b14c6017a50691d6f6f8f2792ea6b.jpg') no-repeat center center fixed; /* Arka plan görselini ekler */
+    background-size: cover; /* Arka plan görselinin boyutunu ekrana uyacak şekilde ayarlar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ekranın tamamını kaplar */
+}
+.slideshow {
+    backdrop-filter: blur(5px); /* Arka planı bulanıklaştırır */
+}
