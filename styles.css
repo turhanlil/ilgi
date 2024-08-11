@@ -78,44 +78,34 @@ body {
 .slideshow {
     backdrop-filter: blur(5px); /* Arka planı bulanıklaştırır */
 }
-
 body {
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Yatayda ortalar */
-    justify-content: center; /* Dikeyde ortalar */
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f0f0;
+    position: relative;
     height: 100vh; /* Ekranın tamamını kaplar */
-    background-color: #f0f0f0; /* Arka plan rengi */
-    font-family: 'Poppins', sans-serif; /* Font ayarı */
-    position: relative; /* İçeriklerin konumlandırılması için */
+    overflow: hidden; /* Sayfanın kaydırılmasını engeller */
 }
 
-button, audio {
-    position: absolute; /* Ekranın ortasında konumlandırma */
-    top: 50%; /* Yatay ortalama */
-    left: 50%; /* Dikey ortalama */
-    transform: translate(-50%, -50%); /* Gerçekten ortalamak için */
-    margin: 0; /* Varsayılan margin'leri kaldırma */
+.audio-container {
+    position: fixed; /* Sabit pozisyon */
+    bottom: 10px; /* Ekranın alt kısmında biraz boşluk bırakır */
+    left: 50%; /* Yatay ortalamak için */
+    transform: translateX(-50%); /* Gerçekten ortalamak için */
+    padding: 10px; /* Butona etrafında boşluk sağlar */
+    z-index: 1000; /* Diğer içeriklerin üstünde olmasını sağlar */
 }
 
-/* Ses kontrolü ve buton arasına boşluk ekleyin */
-button {
-    margin-bottom: 20px; /* Ses kontrolü ile buton arasına boşluk bırakır */
-    padding: 10px 20px; /* Butonun iç boşlukları */
-    font-size: 1rem; /* Buton yazı boyutu */
-    cursor: pointer; /* Tıklama işareti */
-    border: 2px solid #333; /* Butonun etrafında siyah çizgi */
-    border-radius: 5px; /* Köşeleri yuvarlatma */
-    background-color: #fff; /* Buton arka plan rengi */
-    color: #333; /* Buton yazı rengi */
+#play-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: 2px solid #333;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    position: relative;
+    z-index: 1001; /* Daha yüksek z-index, butonun her zaman üstte olmasını sağlar */
 }
 
-/* Ses kontrolü için stil ayarları */
-audio {
-    margin-bottom: 20px; /* Diğer elementlerle boşluk bırakma */
-    border: 2px solid #333; /* Ses kontrolü etrafında siyah çizgi */
-    border-radius: 5px; /* Köşeleri yuvarlatma */
-    padding: 10px; /* Ses kontrolü etrafında boşluk */
-}
