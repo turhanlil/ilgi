@@ -89,10 +89,20 @@ body {
     height: 100vh; /* Ekranın tamamını kaplar */
     background-color: #f0f0f0; /* Arka plan rengi */
     font-family: 'Poppins', sans-serif; /* Font ayarı */
+    position: relative; /* İçeriklerin konumlandırılması için */
 }
 
+button, audio {
+    position: absolute; /* Ekranın ortasında konumlandırma */
+    top: 50%; /* Yatay ortalama */
+    left: 50%; /* Dikey ortalama */
+    transform: translate(-50%, -50%); /* Gerçekten ortalamak için */
+    margin: 0; /* Varsayılan margin'leri kaldırma */
+}
+
+/* Ses kontrolü ve buton arasına boşluk ekleyin */
 button {
-    margin-bottom: 20px; /* Slideshow ve ses kontrolü arasına boşluk bırakır */
+    margin-bottom: 20px; /* Ses kontrolü ile buton arasına boşluk bırakır */
     padding: 10px 20px; /* Butonun iç boşlukları */
     font-size: 1rem; /* Buton yazı boyutu */
     cursor: pointer; /* Tıklama işareti */
@@ -102,11 +112,10 @@ button {
     color: #333; /* Buton yazı rengi */
 }
 
+/* Ses kontrolü için stil ayarları */
 audio {
-    margin-bottom: 20px; /* Slideshow ile ses kontrolü arasına boşluk bırakır */
+    margin-bottom: 20px; /* Diğer elementlerle boşluk bırakma */
     border: 2px solid #333; /* Ses kontrolü etrafında siyah çizgi */
     border-radius: 5px; /* Köşeleri yuvarlatma */
     padding: 10px; /* Ses kontrolü etrafında boşluk */
 }
-
-/* Slideshow ve diğer stiller için CSS kodlarınız buraya eklenecek */
