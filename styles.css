@@ -91,6 +91,17 @@ body {
     font-family: 'Poppins', sans-serif; /* Font ayarı */
 }
 
+button {
+    margin-bottom: 20px; /* Slideshow ve ses kontrolü arasına boşluk bırakır */
+    padding: 10px 20px; /* Butonun iç boşlukları */
+    font-size: 1rem; /* Buton yazı boyutu */
+    cursor: pointer; /* Tıklama işareti */
+    border: 2px solid #333; /* Butonun etrafında siyah çizgi */
+    border-radius: 5px; /* Köşeleri yuvarlatma */
+    background-color: #fff; /* Buton arka plan rengi */
+    color: #333; /* Buton yazı rengi */
+}
+
 audio {
     margin-bottom: 20px; /* Slideshow ile ses kontrolü arasına boşluk bırakır */
     border: 2px solid #333; /* Ses kontrolü etrafında siyah çizgi */
