@@ -1,110 +1,262 @@
+:root {
+    --primary-color: #ffffff;
+    --text-color: #ffffff;
+    --accent-color: #ff6b6b;
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    --transition-speed: 0.6s;
+    --font-family: 'Outfit', sans-serif;
+}
+
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-family);
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Yatay kaydırmayı engelle */
-    background: #f0f0f0; /* Arka plan rengini ayarlayabilirsiniz */
+    overflow: hidden;
+    background: url('giphy.gif') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: var(--text-color);
+}
+
+/* Entrance Overlay */
+#entrance-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(15px);
+    z-index: 1000;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Ekranın tamamını kaplar */
+    transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+}
+
+#entrance-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.entrance-content {
+    text-align: center;
+    animation: fadeIn 1.5s ease-out;
+}
+
+.entrance-content h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+.entrance-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.8;
+}
+
+#enter-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: white;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: var(--font-family);
+    letter-spacing: 1px;
+}
+
+#enter-btn:hover {
+    background: white;
+    color: #333;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+/* App Container */
+.app-container {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    filter: blur(5px);
+}
+
+.app-container.visible {
+    opacity: 1;
+    filter: blur(0);
 }
 
 .slideshow {
-    display: flex;
-    flex-direction: column; /* Fotoğrafları dikey olarak yerleştirir */
-    align-items: center; /* Yatayda ortalar */
-    justify-content: center; /* Dikeyde ortalar */
+    position: relative;
     width: 100%;
     height: 100%;
-    position: relative;
-    z-index: 1; /* Arka planın üstte görünmesini engelle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.6) 100%);
 }
 
 .slide-container {
-    text-align: center;
-    margin: 0 auto;
-    width: 100%;
-    position: absolute; /* Slaytların üst üste gelmesi için */
-    top: 0;
-    left: 0;
-    z-index: 2; /* Slaytların diğer içeriklerden üstte görünmesini sağlar */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
+    opacity: 0;
+    transition: opacity var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1), transform var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
-    align-items: center; /* Fotoğrafları ve yazıları yatayda ortalar */
-    justify-content: center; /* Fotoğrafları ve yazıları dikeyde ortalar */
-    height: 100%;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    max-width: 900px;
+    pointer-events: none;
+}
+
+.slide-container.active {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
+    z-index: 10;
 }
 
 .slide {
-    width: 80%; /* Fotoğrafın genişliğini ayarlayın */
-    height: auto; /* Fotoğrafın oranını korur */
-    max-height: 60vh; /* Fotoğrafın yüksekliği ekranın %60'ını geçmez */
+    width: 100%;
+    height: auto;
+    max-height: 65vh;
+    object-fit: contain;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    margin-bottom: 30px;
 }
 
-p {
-    font-size: 1.2rem;
-    color: #333;
-    text-shadow: 1px 1px 2px #000, 0 0 1em #000, 0 0 0.2em #000; /* Snapchat tarzı dış çizgi */
-    margin: 10px 0; /* Yazının etrafında biraz boşluk */
-    z-index: 3; /* Yazıların diğer içeriklerden üstte görünmesini sağlar */
+.caption-glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    padding: 15px 30px;
+    box-shadow: var(--glass-shadow);
+    max-width: 80%;
 }
 
-section {
-    padding: 20px;
-    text-align: center; /* Başlıklar ve yazılar ortalanır */
-}
-
-.section-photo {
-    width: 80%; /* Fotoğrafın genişliğini ayarlayın */
-    height: auto; /* Fotoğrafın oranını korur */
-    max-height: 50vh; /* Fotoğrafın yüksekliği ekranın %50'sini geçmez */
-    display: block;
-    margin: 0 auto; /* Fotoğrafı ortalar */
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
+.caption-glass p {
+    font-size: 1.1rem;
+    font-weight: 400;
     margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* Yatay kaydırmayı engelle */
-    background: url('177b14c6017a50691d6f6f8f2792ea6b.jpg') no-repeat center center fixed; /* Arka plan görselini ekler */
-    background-size: cover; /* Arka plan görselinin boyutunu ekrana uyacak şekilde ayarlar */
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+/* Audio Control */
+.audio-container {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    z-index: 100;
+}
+
+#music-toggle {
+    background: var(--glass-bg);
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--glass-border);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Ekranın tamamını kaplar */
-}
-.slideshow {
-    backdrop-filter: blur(5px); /* Arka planı bulanıklaştırır */
-}
-body {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Yatayda ortalar */
-    justify-content: center; /* Dikeyde ortalar */
-    height: 100vh; /* Ekranın tamamını kaplar */
-    background-color: #f0f0f0; /* Arka plan rengi */
-    font-family: 'Poppins', sans-serif; /* Font ayarı */
-    position: relative; /* İçeriklerin konumlandırılması için */
+    font-size: 1.2rem;
 }
 
-.audio-container {
+#music-toggle:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(15deg);
+}
+
+/* Controls */
+.controls-glass {
     position: absolute;
-    top: 50%; /* Yatay ortalama */
-    left: 50%; /* Dikey ortalama */
-    transform: translate(-50%, -50%); /* Gerçekten ortalamak için */
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    z-index: 100;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    padding: 10px 20px;
+    border-radius: 40px;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
 }
 
-#play-button {
-    padding: 10px 20px; /* Butonun iç boşlukları */
-    font-size: 1rem; /* Buton yazı boyutu */
-    cursor: pointer; /* Tıklama işareti */
-    border: 2px solid #333; /* Butonun etrafında siyah çizgi */
-    border-radius: 5px; /* Köşeleri yuvarlatma */
-    background-color: #fff; /* Buton arka plan rengi */
-    color: #333; /* Buton yazı rengi */
+.controls-glass button {
+    background: transparent;
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
 }
 
+.controls-glass button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.controls-glass button svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .entrance-content h1 {
+        font-size: 2rem;
+    }
+
+    .slide {
+        max-height: 50vh;
+    }
+
+    .caption-glass p {
+        font-size: 0.9rem;
+    }
+
+    .controls-glass {
+        bottom: 20px;
+        padding: 8px 16px;
+    }
+}
